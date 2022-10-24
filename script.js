@@ -11,6 +11,7 @@ let kiloPounds = 2.20462
 
 const initialValue = document.getElementById("number-input")
 const convertBtn = document.getElementById('convert-btn')
+
 convertBtn.addEventListener('click', function() {
     const toConvert = parseInt(initialValue.value)
 
@@ -23,15 +24,24 @@ convertBtn.addEventListener('click', function() {
         weight:  toConvert * kiloPounds,
         wInPounds: toConvert / kiloPounds
     }
+
+
+    // rendering results to two dp
+    function displayInTwoDp(n){
+        return n.toFixed(2)
+    }
+   
+
+
     //outputs/rendering the outputs
     const length = document.getElementById('length')
-    length.innerHTML = `${toConvert} metres = ${convertedNumbers.len} feet || ${toConvert} feet = ${convertedNumbers.lenInFeet} metres ` 
+    length.innerHTML = `${toConvert} metres = ${ displayInTwoDp(convertedNumbers.len)} feet || ${toConvert} feet = ${displayInTwoDp(convertedNumbers.lenInFeet)} metres ` 
 
     const volume = document.getElementById('volume')
-    volume.innerHTML = `${toConvert} litres = ${convertedNumbers.vol} Gallons || ${toConvert} Gallons = ${convertedNumbers.volInGallons} litres`
+    volume.innerHTML = `${toConvert} litres = ${displayInTwoDp(convertedNumbers.vol)} Gallons || ${toConvert} Gallons = ${displayInTwoDp(convertedNumbers.volInGallons)} litres`
 
     const weight = document.getElementById('mass')
-    weight.innerHTML = `${toConvert} kilos = ${convertedNumbers.weight} Pounds || ${toConvert} Pounds = ${convertedNumbers.wInPounds} kilos`
+    weight.innerHTML = `${toConvert} kilos = ${displayInTwoDp(convertedNumbers.weight)} Pounds || ${toConvert} Pounds = ${displayInTwoDp(convertedNumbers.wInPounds)} kilos`
     return convertedNumbers
 })
 
